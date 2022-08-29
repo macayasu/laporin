@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>WEB - A-PAKER</title>
+    <title>LAPORIN</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -47,7 +47,7 @@
         <div class="container d-flex align-items-center">
 
             <div class="logo me-auto">
-                <h1><a href="<?=base_url();?>Login/login_user">LAPORIN</a></h1>
+                <h1><a href="<?=base_url();?>login/login_user">LAPORIN</a></h1>
                 <!-- Uncomment below if you prefer to use an image logo -->
                 <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
             </div>
@@ -56,17 +56,17 @@
                 <ul>
                     <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
                     <li><a class="nav-link scrollto" href="#about">Tentang</a></li>
-                    <li><a class="nav-link scrollto" href="#visi_misi">Visi dan Misi</a></li>
-                    <li><a class="nav-link scrollto " href="#tata_nilai">Tata Nilai</a></li>
-                    <li><a class="nav-link scrollto" href="#portfolio">Loker</a></li>
-                    <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+                    <li><a class="nav-link scrollto" href="#alur">Alur Laporan</a></li>
+                    <!-- <li><a class="nav-link scrollto " href="#tata_nilai">Tata Nilai</a></li>
+                    <li><a class="nav-link scrollto" href="#portfolio">Loker</a></li> -->
+                    <li><a class="nav-link scrollto" href="#footer">Contact</a></li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
 
-            <div class="header-social-links d-flex align-items-center">
+            <!-- <div class="header-social-links d-flex align-items-center">
                 <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-            </div>
+            </div> -->
 
         </div>
     </header><!-- End Header -->
@@ -81,12 +81,12 @@
                     <div>
                         <h1>LAPORIN</h1>
                         <h2> Aplikasi Pelaporan Kasus Sekolah Dasar Kristen Sokaraja </h2>
-                        <a class="btn btn-warning" href="<?=base_url();?>Login/">Login</a>
-                        <a class="btn btn-success" href="<?=base_url();?>Register/register_user">Register</a>
+                        <a class="btn btn-warning" href="<?=base_url();?>login/">Login</a>
+                        <a class="btn btn-success" href="<?=base_url();?>register/register_user">Register</a>
                     </div>
                 </div>
                 <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="fade-left">
-                    <img src="<?= base_url();?>assets/logo/logo.png" class="img-fluid" alt="">
+                    <img src="<?= base_url();?>assets/public/assets/img/bannersekolah.png" class="img-fluid" alt="">
                 </div>
             </div>
         </div>
@@ -103,19 +103,8 @@
                 <div class="row">
                     <div class="col-lg-6 d-flex flex-column justify-contents-center" data-aos="fade-left">
                         <div class="content pt-4 pt-lg-0">
-                            <h3>Tentang Disnaker Ogan Ilir</h3>
-                            <p class="fst-italic">
-                                Dinas Tenaga Kerja dan Transmigrasi Kabupaten
-                                Ogan Ilir merupakan lembaga unsur Pemerintah Daerah Kabupaten Ogan Ilir yang
-                                dipimpin oleh seorang Kepala Dinas yang berada dibawah dan bertanggung jawab
-                                kepada Bupati Ogan Ilir melalui Sekretaris Daerah.
-                                Untuk itu sebagai landasan hukum pembentukan Dinas Tenaga Kerja dan
-                                Transmigrasi Kabupaten Ogan Ilir sesuai dengan Peraturan Daerah Kabupaten
-                                Ogan Ilir Nomor 04 Tahun 2021 tentang Pembentukan dan Susunan Perangkat
-                                Daerah Kabupaten Ogan Ilir.
-                            </p>
-
-
+                            <h3>Tentang Laporin</h3>
+                            <p class="fst-italic">Laporin Adalah aplikasi pelaporan kasus dalam lingkup sekolah berbasis website. Aplikasi ini mempermudah siswa - siswi dalam melaporkan permasalahan yang terjadi di sekolah, tanpa merasa takut karena terjamin kerahasiaanya. Laporin telah bekerja sama dengan dinas pendidikan setempat, oleh karena itu laporan yang dikirim dapat didisposisikan langsung ke dinas pendidikan. Jika laporan yang dikirim oleh pelapor tidak mendapat tanggapan dalam 3 hari maka pelapor dapat mendisposisikan laporannya. Aplikasi ini diharapkan mampu mengatasi permasalahan yang ada di lingkup sekolah sampai ke akar - akarnya.</p>
                         </div>
                     </div>
                     <div class="col-lg-6" data-aos="zoom-in">
@@ -126,8 +115,53 @@
 
             </div>
         </section>
+
+          <!-- ======= About Section ======= -->
+          <section id="alur" class="about">
+              <div class="container">
+                  <div class="row">
+                      <h3>Alur Pelaporan</h3>
+                      <div class="col-lg-12" data-aos="zoom-in">
+                          <img src="<?= base_url();?>assets/public/assets/img/alur.png"  width="1025px" class="img-fluid" alt="">
+                    </div>
+                    <br>
+                    <div class="col-lg-2 d-flex flex-column justify-contents-center" data-aos="fade-left">
+                        <br>
+                        <div class="content">
+                          <p style="text-align:center;font-size:14px">Melaporkan keluhan atau kasus dengan jelas dan lengkap, lebih baik disertakan gambar.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 d-flex flex-column justify-contents-center" data-aos="fade-left">
+                        <br>
+                        <div class="content">
+                          <p style="text-align:center;font-size:14px">Dalam 3 hari, laporan akan di verifikasi atau ditanggapi oleh pihak sekolah, jika lebih dari 3 hari laporan belum ditanggapi maka pelapor dapat mendisposisikan laporan tersebut kepada Dinas Pendidikan.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 d-flex flex-column justify-contents-center" data-aos="fade-left">
+                        <br>
+                        <div class="content">
+                          <p style="text-align:center;font-size:14px">Laporan akan ditindaklanjuti dan memberikan balasan.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 d-flex flex-column justify-contents-center" data-aos="fade-left">
+                        <br>
+                        <div class="content">
+                          <p style="text-align:center;font-size:14px">Pelapor dapat memberikan tanggapan atas balasan dari pihak sekolah.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 d-flex flex-column justify-contents-center" data-aos="fade-left">
+                        <br>
+                        <div class="content">
+                          <p style="text-align:center;font-size:14px">Pelapor dapat memberikan tanggapan atas balasan dari pihak sekolah.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section><!-- End About Section -->
+
         <!-- ======= About Section ======= -->
-        <section id="visi_misi" class="about">
+        <!-- <section id="visi_misi" class="about">
             <div class="container">
 
                 <div class="row">
@@ -167,10 +201,12 @@
                 </div>
 
             </div>
-        </section><!-- End About Section -->
+        </section> -->
+        
+        <!-- End About Section -->
 
         <!-- ======= Features Section ======= -->
-        <section id="tata_nilai" class="features">
+        <!-- <section id="tata_nilai" class="features">
             <div class="container">
 
                 <div class="row">
@@ -232,12 +268,13 @@
                 </div>
 
             </div>
-        </section><!-- End Features Section -->
+        </section> -->
+        <!-- End Features Section -->
 
 
 
         <!-- ======= Portfolio Section ======= -->
-        <section id="portfolio" class="portfolio">
+        <!-- <section id="portfolio" class="portfolio">
             <div class="container">
 
                 <div class="section-title" data-aos="fade-up">
@@ -288,31 +325,30 @@
                 </div>
 
             </div>
-        </section><!-- End Portfolio Section -->
+        </section> -->
+        <!-- End Portfolio Section -->
 
         <!-- ======= Cta Section ======= -->
-        <section id="cta" class="cta">
+        <!-- <section id="cta" class="cta">
             <div class="container">
 
                 <div class="row" data-aos="zoom-in">
                     <div class="col-lg-9 text-center text-lg-start">
                         <h3>Daftar Kartu Pencari Kerja/AK1</h3>
-                        <!-- <p> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                            mollit anim id est laborum.</p> -->
                     </div>
                     <div class="col-lg-3 cta-btn-container text-center">
-                        <a class="cta-btn align-middle" href="<?=base_url();?>Register/register_user">Daftar</a>
+                        <a class="cta-btn align-middle" href="<?=base_url();?>register/register_user">Daftar</a>
                     </div>
                 </div>
 
             </div>
-        </section><!-- End Cta Section -->
+        </section> -->
+        <!-- End Cta Section -->
 
 
 
         <!-- ======= Team Section ======= -->
-        <section id="team" class="team">
+        <!-- <section id="team" class="team">
             <div class="container">
 
                 <div class="section-title" data-aos="fade-up">
@@ -328,7 +364,8 @@
                 </div>
 
             </div>
-        </section><!-- End Team Section -->
+        </section> -->
+        <!-- End Team Section -->
 
 
 
@@ -336,7 +373,7 @@
 
 
         <!-- ======= Contact Section ======= -->
-        <section id="contact" class="contact section-bg">
+        <!-- <section id="contact" class="contact section-bg">
             <div class="container">
 
                 <div class="section-title" data-aos="fade-up">
@@ -378,42 +415,47 @@
                 </div>
 
             </div>
-        </section><!-- End Contact Section -->
+        </section> -->
+        <!-- End Contact Section -->
 
     </main><!-- End #main -->
-
+    <br>
+    <br>
     <!-- ======= Footer ======= -->
     <footer id="footer">
         <div class="footer-top">
             <div class="container">
                 <div class="row">
 
-                    <div class="col-lg-7 col-md-7">
+                    <div class="col-lg-5 col-md-4">
                         <div class="footer-info">
-                            <h3>A-PAKER</h3>
+                            <h4>ALAMAT SEKOLAH</h4>
                             <p>
-                                Jalan Raya Lintas Timur <br>
-                                KM.35 Indralaya Raya<br><br>
-                                <strong>Phone:</strong> (0711) 580 600<br>
-                                <strong>Instagram:</strong> @disnaskertrans.oganilir<br>
+                            Jl. Budi Utomo No. 46 / V<br>
+                            Sokaraja Kidul, Kec. Sokaraja,<br>
+                            Kab. Banyumas, Jawa Tengah, Kode Pos 53181
+                            <br><br>
                             </p>
-                            <div class="social-links mt-3">
-                                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-                            </div>
                         </div>
                     </div>
-
-                    <div class="col-lg-4 col-md-8 footer-links">
-                        <h4>Useful Links</h4>
-                        <ul>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#hero">Home</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#about">Tentang</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#visi_misi">Visi dan Misi</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#tata_nilai">Tata Nilai</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#portfolio">Loker</a></li>
-                        </ul>
+                    <div class="col-lg-4 col-md-4">
+                        <div class="footer-info">
+                            <h4>EMAIL</h4>
+                            <p>
+                            sdksokaraja@gmail.com
+                            <br><br>
+                            </p>
+                        </div>
                     </div>
-
+                    <div class="col-lg-3 col-md-4">
+                        <div class="footer-info">
+                            <h4>TELEPHONE / WHATSAPP</h4>
+                            <p>
+                            +622817621853
+                            <br><br>
+                            </p>
+                        </div>
+                    </div>
 
 
 
@@ -423,7 +465,7 @@
 
         <div class="container">
             <div class="copyright">
-                &copy; Copyright <strong><span>Scaffold</span></strong>. All Rights Reserved | Repost by <a href='https://stokcoding.com/' title='StokCoding.com' target='_blank'>StokCoding.com</a>
+                &copy; Copyright <strong><span>STIKOM YOS SUDARSO</span></strong>. All Rights Reserved
 				
             </div>
             <div class="credits">

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>A-PAKER | REGISTER</title>
+    <title>LAPORIN | REGISTER</title>
 
     <!--===============================================================================================-->
     <link rel="icon" type="image/png" href="<?= base_url();?>assets/favicon.ico" />
@@ -60,7 +60,7 @@
                     <div class="signup-form">
                         <h2 class="form-title">Sign up</h2>
                         <form method="POST" class="register-form" id="register-form"
-                            action="<?= base_url();?>Register/proses_perusahaan">
+                            action="<?= base_url();?>register/proses_perusahaan">
                             <div class="form-group">
                                 <label for="username"><i class="zmdi zmdi-account material-icons-name"></i></label>
                                 <input type="text" name="username" id="username" placeholder="Your Username" />

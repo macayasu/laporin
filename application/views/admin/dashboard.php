@@ -65,98 +65,73 @@
 				<div class="container-fluid">
 					<!-- Small boxes (Stat box) -->
 					<div class="row">
-						<div class="col-lg-3 col-6">
+						<div class="col-lg-6 col-6">
 							<!-- small box -->
 							<div class="small-box bg-primary">
 								<div class="inner">
-									<h3><?= $pencaker['total_pencaker']; ?></h3>
-
-									<p>Data Pencaker</p>
+									<h3><?= $laporin_terbaru['total_laporin']; ?></h3>
+									<p>Laporin Baru</p>
 								</div>
 								<div class="icon">
 									<i class="ion ion-person-stalker"></i>
 								</div>
-								<a href="<?= base_url(); ?>Pencaker/view_perusahaan" class="small-box-footer">More info
-									<i class="fas fa-arrow-circle-right"></i></a>
 							</div>
 						</div>
-						<div class="col-lg-3 col-6">
+						<div class="col-lg-6 col-6">
 							<!-- small box -->
 							<div class="small-box bg-info">
 								<div class="inner">
-									<h3><?= $pencaker_acitve['total_pencaker']; ?></h3>
+									<h3><?= $laporin_diproses['total_laporin']; ?></h3>
 
-									<p>Data Pencaker Aktif</p>
+									<p>Laporin Diproses</p>
 								</div>
 								<div class="icon">
 									<i class="ion ion-person-stalker"></i>
 								</div>
-								<a href="<?= base_url(); ?>Pencaker/view_perusahaan" class="small-box-footer">More info
-									<i class="fas fa-arrow-circle-right"></i></a>
 							</div>
 						</div>
 						<!-- ./col -->
 
-						<div class="col-lg-3 col-6">
+						<div class="col-lg-6 col-6">
 							<!-- small box -->
 							<div class="small-box bg-danger">
 								<div class="inner">
-									<h3><?= $pencaker_no_active['total_pencaker']; ?></h3>
+								<h3><?= $laporin_ditolak['total_laporin']; ?></h3>
 
-									<p>Data Pencaker Non Aktif</p>
+									<p>Laporin Ditolak</p>
 								</div>
 								<div class="icon">
 									<i class="ion ion-person-stalker"></i>
 								</div>
-								<a href="<?= base_url(); ?>Pencaker/view_perusahaan" class="small-box-footer">More
-									info
-									<i class="fas fa-arrow-circle-right"></i></a>
 							</div>
 						</div>
 
 						<!-- ./col -->
-						<div class="col-lg-3 col-6">
+						<div class="col-lg-6 col-6">
 							<!-- small box -->
 							<div class="small-box bg-success">
 								<div class="inner">
-									<h3><?= $perusahaan['total_perusahaan']; ?></h3>
+								<h3><?= $laporin_selesai['total_laporin']; ?></h3>
 
-									<p>Data Perusahaan</p>
+									<p>Laporin Selesai</p>
 								</div>
 								<div class="icon">
 									<i class="ion ion-stats-bars"></i>
 								</div>
-								<a href="<?= base_url(); ?>Perusahaan/view_admin" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
 							</div>
 						</div>
 						<!-- ./col -->
-						<div class="col-lg-3 col-6">
+						<div class="col-lg-12 col-12">
 							<!-- small box -->
 							<div class="small-box bg-info">
 								<div class="inner">
-									<h3><?= $perusahaan_active['total_perusahaan']; ?></h3>
+								<h3><?= $laporin_didisposisikan['total_laporin']; ?></h3>
 
-									<p>Data Perusahaan Aktif</p>
+									<p>Laporin Didisposisikan</p>
 								</div>
 								<div class="icon">
 									<i class="ion ion-stats-bars"></i>
 								</div>
-								<a href="<?= base_url(); ?>Perusahaan/view_admin" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-							</div>
-						</div>
-						<!-- ./col -->
-						<div class="col-lg-3 col-6">
-							<!-- small box -->
-							<div class="small-box bg-danger">
-								<div class="inner">
-									<h3><?= $perusahaan_no_active['total_perusahaan']; ?></h3>
-
-									<p>Data Perusahaan Non Aktif</p>
-								</div>
-								<div class="icon">
-									<i class="ion ion-stats-bars"></i>
-								</div>
-								<a href="<?= base_url(); ?>Perusahaan/view_admin" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
 							</div>
 						</div>
 						<!-- ./col -->

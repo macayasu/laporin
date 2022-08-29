@@ -21,14 +21,14 @@ class Pencaker extends CI_Controller
             $data['user'] = $this->m_user->get_all_user()->result_array();
             $data['status_verifikasi_data'] = $this->m_status_verifikasi->get_all_status_verifikasi()->result_array();
             $data['status_aktif_data'] = $this->m_status_aktif->get_all_status_aktif()->result_array();
-            $data['status_perpanjangan_data'] = $this->m_status_perpanjangan->get_all_status_perpanjangan()->result_array();
+            // $data['status_perpanjangan_data'] = $this->m_status_perpanjangan->get_all_status_perpanjangan()->result_array();
 
             $this->load->view('admin/pencaker', $data);
 
         } else {
 
             $this->session->set_flashdata('loggin_err', 'loggin_err');
-            redirect('Login/login_user');
+            redirect('login/login_user');
 
         }
     }
@@ -48,7 +48,7 @@ class Pencaker extends CI_Controller
         } else {
 
             $this->session->set_flashdata('loggin_err', 'loggin_err');
-            redirect('Login/login_user');
+            redirect('login/login_user');
 
         }
     }
@@ -65,7 +65,7 @@ class Pencaker extends CI_Controller
         } else {
 
             $this->session->set_flashdata('loggin_err', 'loggin_err');
-            redirect('Login/login_perusahaan');
+            redirect('login/login_perusahaan');
 
         }
     }

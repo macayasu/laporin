@@ -1,6 +1,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>WEBSITE | A-PAKER</title>
+<title>WEBSITE | LAPORIN</title>
 
 <!--===============================================================================================-->
 <link rel="icon" type="image/png" href="<?= base_url();?>assets/favicon.ico" />

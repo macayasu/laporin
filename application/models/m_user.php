@@ -17,12 +17,12 @@ class M_user extends CI_Model
             return false;
     }
 
-    public function delete_perusahaan($id_user)
+    public function delete_admin($id_user)
     {
        $this->db->trans_start();
 
        $this->db->query("DELETE FROM user WHERE id_user='$id_user'");
-       $this->db->query("DELETE FROM perusahaan_detail WHERE id_perusahaan_detail='$id_user'");
+       $this->db->query("DELETE FROM admin_detail WHERE id_user_detail='$id_user'");
 
        $this->db->trans_complete();
         if($this->db->trans_status()==true)
@@ -30,6 +30,7 @@ class M_user extends CI_Model
         else
             return false;
     }
+
 
     public function get_user_detail_by_id($id_user)
     {
@@ -44,10 +45,10 @@ class M_user extends CI_Model
         return $hasil;
     }
 
-    public function get_all_user_perpanjang()
+    public function get_all_admin()
     {
-        $hasil = $this->db->query("SELECT * FROM user JOIN user_detail ON user.id_user_detail = user_detail.id_user_detail 
-         WHERE id_user_level = 3 AND user_detail.nama_lengkap IS NOT NULL AND user_detail.id_status_verifikasi = 1 AND user_detail.id_status_perpanjangan = 2 AND user_detail.id_status_aktif = 1");
+        $hasil = $this->db->query("SELECT * FROM user JOIN admin_detail ON user.id_user_detail = admin_detail.id_user_detail 
+         WHERE id_user_level = 2 AND admin_detail.nama IS NOT NULL");
         return $hasil;
     }
 
@@ -66,62 +67,13 @@ class M_user extends CI_Model
         return $hasil;
     }
 
-    public function count_all_user_active()
-    {
-        $hasil = $this->db->query("SELECT  COUNT(id_user) as total_pencaker FROM user JOIN user_detail ON user.id_user_detail = user_detail.id_user_detail 
-         WHERE id_user_level = 3 AND id_status_aktif = 2");
-        return $hasil;
-    }
 
-    public function count_all_user_no_active()
-    {
-        $hasil = $this->db->query("SELECT  COUNT(id_user) as total_pencaker FROM user JOIN user_detail ON user.id_user_detail = user_detail.id_user_detail 
-         WHERE id_user_level = 3 AND id_status_aktif = 1");
-        return $hasil;
-    }
-
-
-    public function get_all_perusahaan()
-    {
-        $hasil = $this->db->query("SELECT * FROM user JOIN perusahaan_detail ON user.id_user_detail = perusahaan_detail.id_perusahaan_detail 
-         WHERE id_user_level = 2 AND perusahaan_detail.nama_perusahaan IS NOT NULL");
-        return $hasil;
-    }
-
-    public function count_all_perusahaan()
-    {
-        $hasil = $this->db->query("SELECT  COUNT(id_user) as total_perusahaan  FROM user JOIN perusahaan_detail ON user.id_user_detail = perusahaan_detail.id_perusahaan_detail 
-         WHERE id_user_level = 2");
-        return $hasil;
-    }
-
-    public function count_all_perusahaan_active()
-    {
-        $hasil = $this->db->query("SELECT  COUNT(id_user) as total_perusahaan  FROM user JOIN perusahaan_detail ON user.id_user_detail = perusahaan_detail.id_perusahaan_detail 
-         WHERE id_user_level = 2 AND id_status_aktif = 2");
-        return $hasil;
-    }
-
-    public function count_all_perusahaan_no_active()
-    {
-        $hasil = $this->db->query("SELECT  COUNT(id_user) as total_perusahaan  FROM user JOIN perusahaan_detail ON user.id_user_detail = perusahaan_detail.id_perusahaan_detail 
-         WHERE id_user_level = 2 AND id_status_aktif = 1");
-        return $hasil;
-    }
-
-    public function get_all_perusahaan_by_id($id_user)
-    {
-        $hasil = $this->db->query("SELECT * FROM user JOIN perusahaan_detail ON user.id_user_detail = perusahaan_detail.id_perusahaan_detail 
-         WHERE id_user_level = 2 AND id_perusahaan_detail='$id_user'");
-        return $hasil;
-    }
-
-    public function pendaftaran_user($id, $username, $email, $password,  $id_user_level, $id_status_verifikasi, $id_status_aktif, $id_status_perpanjangan)
+    public function pendaftaran_user($id, $username, $email, $pass, $id_user_level, $no_pendaftaran, $nama, $nisn,$telp, $alamat, $kelas, $nama_ortu, $telp_ortu, $alamat_ortu)
     {
        $this->db->trans_start();
 
-       $this->db->query("INSERT INTO user(id_user, username, password, email ,id_user_level, id_user_detail) VALUES ('$id','$username','$password','$email','$id_user_level','$id')");
-       $this->db->query("INSERT INTO user_detail(id_user_detail, id_status_verifikasi, id_status_aktif, id_status_perpanjangan, date_registered) VALUES ('$id','$id_status_verifikasi','$id_status_aktif','$id_status_perpanjangan', NOW())");
+       $this->db->query("INSERT INTO user(id_user, username, password, email ,id_user_level, id_user_detail) VALUES ('$id','$username','$pass','$email','$id_user_level','$id')");
+       $this->db->query("INSERT INTO user_detail(id_user_detail,no_pendaftaran,nama_lengkap,nisn,telp,alamat,kelas,nama_ortu,telp_ortu,alamat_ortu, date_registered) VALUES ('$id','$no_pendaftaran','$nama','$nisn','$telp','$alamat','$kelas','$nama_ortu','$telp_ortu','$alamat_ortu', NOW())");
 
        $this->db->trans_complete();
         if($this->db->trans_status()==true)
@@ -154,20 +106,7 @@ class M_user extends CI_Model
             return false;
     }
 
-    public function pendaftaran_perusahaan($id, $username, $email, $password,  $id_user_level, $id_status_verifikasi, $id_status_aktif)
-    {
-       $this->db->trans_start();
-
-       $this->db->query("INSERT INTO user(id_user, username, password, email ,id_user_level, id_user_detail) VALUES ('$id','$username','$password','$email','$id_user_level','$id')");
-       $this->db->query("INSERT INTO perusahaan_detail(id_perusahaan_detail, id_status_verifikasi, id_status_aktif, date_registered) VALUES ('$id','$id_status_verifikasi','$id_status_aktif', NOW())");
-
-       $this->db->trans_complete();
-        if($this->db->trans_status()==true)
-            return true;
-        else
-            return false;
-    }
-
+  
     public function cek_login($username)
     {
         
@@ -214,58 +153,41 @@ class M_user extends CI_Model
 
     }
 
-    public function update_perusahaan_detail($id_user, $nama_perusahaan, 
-    $jenis_perusahaan, $npwp_perusahaan, $provinsi, $kota, $alamat, $kode_pos, $deskripsi, $nomor_telepon, $logo)
+    
+    public function insert_admin($id,$id_user_level,$nuptk,$nama,$email,$alamat,$telp,$kelas,$username,$password)
     {
-        $this->db->trans_start();
+       $this->db->trans_start();
 
-        $this->db->query("UPDATE perusahaan_detail SET nama_perusahaan='$nama_perusahaan', jenis_perusahaan='$jenis_perusahaan', 
-        npwp_perusahaan='$npwp_perusahaan', provinsi='$provinsi', kota='$kota', alamat='$alamat', kode_pos='$kode_pos', deskripsi='$deskripsi',
-        nomor_telepon='$nomor_telepon',
-        logo='$logo'WHERE id_perusahaan_detail='$id_user'");
-
-        $this->db->trans_complete();
-        if($this->db->trans_status()==true)
-            return true;
-        else
-            return false;
-    }
-
-    public function update_perusahaan($id_user, $nama_perusahaan, 
-    $jenis_perusahaan, $npwp_perusahaan, $provinsi, $kota, $alamat, $kode_pos, $deskripsi, $nomor_telepon, $logo)
-    {
-        $this->db->trans_start();
-
-        $this->db->query("UPDATE perusahaan_detail SET nama_perusahaan='$nama_perusahaan', jenis_perusahaan='$jenis_perusahaan', 
-        npwp_perusahaan='$npwp_perusahaan', provinsi='$provinsi', kota='$kota', alamat='$alamat', kode_pos='$kode_pos', deskripsi='$deskripsi',
-        nomor_telepon='$nomor_telepon',
-        logo='$logo'WHERE id_perusahaan_detail='$id_user'");
-
-        $this->db->trans_complete();
-        if($this->db->trans_status()==true)
-            return true;
-        else
-            return false;
-    }
-
-    public function insert_perusahaan($id, $username, $password, $email, $nama_perusahaan, 
-    $jenis_perusahaan, $npwp_perusahaan, $provinsi, $kota, $alamat, $kode_pos, $deskripsi, $nomor_telepon, $logo, $id_status_aktif, $id_status_verifikasi, $id_user_level)
-    {
-        $this->db->trans_start();
-        $this->db->query("INSERT INTO user(id_user, username, password, email ,id_user_level, id_user_detail) VALUES ('$id','$username','$password','$email','$id_user_level','$id')");
-        $this->db->query("INSERT INTO perusahaan_detail(id_perusahaan_detail, nama_perusahaan, jenis_perusahaan,
-        npwp_perusahaan, provinsi, kota, alamat, kode_pos, deskripsi, nomor_telepon, logo, id_status_verifikasi, 
-        id_status_aktif, date_registered) VALUES ('$id','$nama_perusahaan','$jenis_perusahaan','$npwp_perusahaan','$provinsi',
-        '$kota','$alamat','$kode_pos','$deskripsi','$nomor_telepon','$logo',
-        '$id_status_verifikasi','$id_status_aktif', NOW())");
+       $this->db->query("INSERT INTO user(id_user, username, password, email ,id_user_level, id_user_detail) VALUES ('$id','$username','$password','$email','$id_user_level','$id')");
        
+       $this->db->query("INSERT INTO admin_detail(id_user_detail,nuptk,nama,telp,alamat,kelas,date_registered) 
+       VALUES ('$id','$nuptk','$nama','$telp','$alamat','$kelas',NOW())");
+
+       $this->db->trans_complete();
+        if($this->db->trans_status()==true)
+            return true;
+        else
+            return false;
+    }
+
+    public function update_admin_detail($id,$nuptk,$nama,$email,$alamat,$telp,$kelas,$username,$password) {
+        $this->db->trans_start();
+
+        $this->db->query("UPDATE user SET username='$username', password='$password', email='$email' WHERE id_user_detail='$id'");
+
+        $this->db->query("UPDATE admin_detail SET nuptk='$nuptk', nama='$nama', telp='$telp', 
+        alamat='$alamat', kelas='$kelas' WHERE id_user_detail='$id'");
 
         $this->db->trans_complete();
         if($this->db->trans_status()==true)
             return true;
         else
             return false;
+
     }
+
+
+
 
    
 

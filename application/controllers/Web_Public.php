@@ -11,9 +11,9 @@ class Web_Public extends CI_Controller {
 
 	public function index()
 	{
-		$data['loker'] = $this->m_loker->get_all_loker()->result_array();
+		// $data['loker'] = $this->m_loker->get_all_loker()->result_array();
 		
-		$this->load->view('public', $data);
+		$this->load->view('public');
 	}
 
 	public function loker_detail($id_loker)

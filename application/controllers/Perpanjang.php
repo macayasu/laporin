@@ -21,7 +21,7 @@ class Perpanjang extends CI_Controller {
 		}else{
 
 			$this->session->set_flashdata('loggin_err','loggin_err');
-			redirect('Login/login_user');
+			redirect('login/login_user');
 
 		}
 

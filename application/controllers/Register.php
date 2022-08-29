@@ -23,22 +23,27 @@ class Register extends CI_Controller {
 	public function proses_user()
 	{
 
-		$username = $this->input->post('username');
+		$nama = $this->input->post('nama');
+		$nisn = $this->input->post('nisn');
+		$telp = $this->input->post('telp');
 		$email = $this->input->post('email');
+		$alamat = $this->input->post('alamat');
+		$kelas = $this->input->post('kelas');
+		$nama_ortu = $this->input->post('nama_ortu');
+		$telp_ortu = $this->input->post('telp_ortu');
+		$alamat_ortu = $this->input->post('alamat_ortu');
+		$username = $this->input->post('username');
 		$pass = $this->input->post('pass');
 		$re_pass = $this->input->post('re_pass');
 
-		
-
+	
 		$id_user_level = 3;
-		$id_status_verifikasi = 1;
-		$id_status_aktif = 1;
-		$id_status_perpanjangan = 1;
         $id = md5($username.$email.$pass.rand(1, 999999));
+        $no_pendaftaran = rand(10000000, 99999999);
 
 		if($pass == $re_pass)
         {
-			$hasil = $this->m_user->pendaftaran_user($id, $username, $email, $pass, $id_user_level, $id_status_verifikasi, $id_status_aktif, $id_status_perpanjangan);
+			$hasil = $this->m_user->pendaftaran_user($id, $username, $email, $pass, $id_user_level, $no_pendaftaran, $nama, $nisn,$telp, $alamat, $kelas, $nama_ortu, $telp_ortu, $alamat_ortu);
 
 			if($hasil==false){
                 $this->session->set_flashdata('eror','eror');

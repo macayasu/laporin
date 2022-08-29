@@ -52,7 +52,7 @@ class Login extends CI_Controller {
 					$this->session->set_userdata('username', $user['username']);
 					$this->session->set_userdata('id_user_level', $user['id_user_level']);
 	
-					redirect('Dashboard/view_perusahaan');
+					redirect('Dashboard/view_admin');
 	
 				}else if($user['id_user_level'] == 3){
 	
@@ -65,18 +65,18 @@ class Login extends CI_Controller {
 	
 				}else{
 					$this->session->set_flashdata('loggin_err','loggin_err');
-					redirect('Login/login_user');
+					redirect('login/login_user');
 				}
 
 			}else{
 
 			$this->session->set_flashdata('loggin_err_pass','loggin_err_pass');
-			redirect('Login/login_user');
+			redirect('login/login_user');
 
 			}
 		}else{
 			$this->session->set_flashdata('loggin_err_no_user','loggin_err_no_user');
-			redirect('Login/login_user');
+			redirect('login/login_user');
 		}
 		
 		
@@ -124,18 +124,18 @@ class Login extends CI_Controller {
 	
 				}else{
 					$this->session->set_flashdata('loggin_err','loggin_err');
-					redirect('Login/login_perusahaan');
+					redirect('login/login_perusahaan');
 				}
 
 			}else{
 
 			$this->session->set_flashdata('loggin_err_pass','loggin_err_pass');
-			redirect('Login/login_perusahaan');
+			redirect('login/login_perusahaan');
 
 			}
 		}else{
 			$this->session->set_flashdata('loggin_err_no_user','loggin_err_no_user');
-			redirect('Login/login_perusahaan');
+			redirect('login/login_perusahaan');
 		}
 		
 		
@@ -146,14 +146,14 @@ class Login extends CI_Controller {
 		$this->session->unset_userdata('logged_in');
 		$this->session->unset_userdata('id_user');
         $this->session->set_flashdata('success_log_out','success_log_out');
-        redirect('Login/login_user');
+        redirect('login/login_user');
 	}
 
 	public function log_out_perusahaan(){
 		$this->session->unset_userdata('logged_in');
 		$this->session->unset_userdata('id_user');
         $this->session->set_flashdata('success_log_out','success_log_out');
-        redirect('Login/login_perusahaan');
+        redirect('login/login_perusahaan');
 	}
 
 	

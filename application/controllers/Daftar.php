@@ -23,7 +23,7 @@ class Daftar extends CI_Controller {
         }else{
 
             $this->session->set_flashdata('loggin_err','loggin_err');
-            redirect('Login/login_user');
+            redirect('login/login_user');
 
         }
     }
@@ -41,7 +41,7 @@ class Daftar extends CI_Controller {
     }else{
 
         $this->session->set_flashdata('loggin_err','loggin_err');
-        redirect('Login/login_perusahaan');
+        redirect('login/login_perusahaan');
 
     }
     }
