@@ -59,7 +59,7 @@
         <section class="signup">
             
             <div class="container">
-            <h2 style="margin-left:100px;margin-top:10px;margin-bottom:-20px">Registrasi</h2>
+            <h2 style="margin-left:100px;margin-top:10px;margin-bottom:-20px;padding-top:20px"><b>Registrasi</b></h2>
 
             <form method="POST" class="register-form" id="register-form"
                         action="<?= base_url();?>register/proses_user">

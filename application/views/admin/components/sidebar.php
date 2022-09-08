@@ -41,7 +41,6 @@
                     </a>
                 </li>
 
-
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon  fas fa-users"></i>
@@ -53,24 +52,47 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="<?=base_url();?>laporin/view_admin/all" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Laporin</p>
+                                <i class="nav-icon fas fa-book"></i>
+                                <p>Pelaporan</p>
                             </a>
                         </li>
-                        <!-- <li class="nav-item">
-                            <a href="<?=base_url();?>laporin/view_admin_pencaker_perpanjang" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Laporin Perpanjang</p>
+                         <!-- <li class="nav-item">
+                            <a href="<?=base_url();?>laporin/kelas/I" class="nav-link">
+                                <i class="nav-icon fas fa-inbox"></i>
+                                <p>Laporan Kelas</p>
                             </a>
                         </li> -->
+                        <li class="nav-item">
+                            <a href="<?=base_url();?>laporin/kategori/1" class="nav-link">
+                                <i class="nav-icon fas fa-cube"></i>
+                                <p>Kategori</p>
+                            </a>
+                        </li>
+                       
                     </ul>
                 </li>
+
                 <li class="nav-item">
-                    <a href="<?=base_url();?>Perusahaan/view_admin" class="nav-link">
-                        <i class="nav-icon fas fa-building"></i>
-                        <p>Data Perusahaan</p>
+                <a href="<?=base_url();?>master/data_profil_admin" class="nav-link">
+                        <i class="nav-icon fas fa-user"></i>
+                        <p>Data Profil</p>
                     </a>
                 </li>
+                <!-- <li class="nav-item">
+                    <a href="http://wa.me/628999673455" target="_blank" class="nav-link">
+                        <i class="nav-icon fas fa-question"></i>
+                        <p>Bantuan</p>
+                    </a>
+                </li> -->
+
+                <li class="nav-item">
+                    <a href="<?=base_url();?>login/log_out_user" class="nav-link">
+                        <i class="nav-icon fa fa-arrow-right"></i>
+                        <p>Logout</p>
+                    </a>
+                </li>
+                
+              
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

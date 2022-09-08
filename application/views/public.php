@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -81,11 +83,21 @@
                     <div>
                         <h1>LAPORIN</h1>
                         <h2> Aplikasi Pelaporan Kasus Sekolah Dasar Kristen Sokaraja </h2>
+                        <?php if(!$this->session->userdata('logged_in')) {?>
                         <a class="btn btn-warning" href="<?=base_url();?>login/">Login</a>
                         <a class="btn btn-success" href="<?=base_url();?>register/register_user">Register</a>
+                        <?php } else {?>
+                            <?php if($this->session->userdata('id_user_level') == 1) {?>
+                                <a class="btn btn-primary" href="<?=base_url();?>Dashboard/view_admin/">Kembali ke Laporin</a>
+                            <?php } else if($this->session->userdata('id_user_level') == 2) {?>
+                                <a class="btn btn-primary" href="<?=base_url();?>Dashboard/view_admin/">Kembali ke Laporin</a>
+                            <?php } else {?>
+                                    <a class="btn btn-primary" href="<?=base_url();?>Dashboard/view_user/">Kembali ke Laporin</a>
+                            <?php }?>
+                        <?php }?>
                     </div>
                 </div>
-                <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="fade-left">
+                <div class="col-lg-6 order-1" data-aos="fade-left">
                     <img src="<?= base_url();?>assets/public/assets/img/bannersekolah.png" class="img-fluid" alt="">
                 </div>
             </div>
@@ -122,7 +134,7 @@
                   <div class="row">
                       <h3>Alur Pelaporan</h3>
                       <div class="col-lg-12" data-aos="zoom-in">
-                          <img src="<?= base_url();?>assets/public/assets/img/alur.png"  width="1025px" class="img-fluid" alt="">
+                          <img src="<?= base_url();?>assets/public/assets/img/alur.png"  width="100%" class="img-fluid" alt="">
                     </div>
                     <br>
                     <div class="col-lg-2 d-flex flex-column justify-contents-center" data-aos="fade-left">

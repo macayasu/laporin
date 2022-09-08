@@ -41,6 +41,7 @@
     });
     </script>
     <?php } ?>
+    
     <?php if ($this->session->flashdata('eror')){ ?>
     <script>
     swal({
@@ -56,6 +57,16 @@
     swal({
         title: "Error!",
         text: "Anda Belum Terdaftar!",
+        icon: "error"
+    });
+    </script>
+    <?php } ?>
+
+    <?php if($this->session->flashdata('loggin_err_no_us_pw')){?>
+    <script>
+    swal({
+        title: "Error!",
+        text: "Username dan Password harus diisi!",
         icon: "error"
     });
     </script>
@@ -103,12 +114,12 @@
                     </div>
 
                     <div class="signin-form">
-                        <h2 class="form-title">Sign in</h2>
+                        <h2 class="form-title">Log in</h2>
                         <form method="POST" class="register-form" id="login-form"
                             action="<?=base_url();?>login/proses?>">
                             <div class="form-group">
                                 <label for="username"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="username" id="username" placeholder="Your Name" />
+                                <input type="text" name="username" id="username" placeholder="Username" />
                             </div>
                             <div class="form-group">
                                 <label for="password"><i class="zmdi zmdi-lock"></i></label>

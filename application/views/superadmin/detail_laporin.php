@@ -1,4 +1,6 @@
 
+
+
 <style>
 body {
   margin: 0 auto;
@@ -149,6 +151,8 @@ body {
                                     <form action="<?=base_url();?>laporin/update_status_laporin" enctype="multipart/form-data" method="POST">                                            
                                             <div class="form-group">
                                               <input type="hidden" name="id_laporin" value="<?=$laporin[0]['id_laporin']?>"/>
+                                              <input type="hidden" name="param" value="<?=explode('/',$_SERVER['REQUEST_URI'])[3]?>"/>
+
                                             </div>
                                             <div class="form-group">   
                                                <select name="status"  id="status" class="form-control mb-3">
@@ -160,8 +164,7 @@ body {
                                         <button type="submit" class="btn btn-primary mb-3 mr-2">
                                             Update
                                         </button>
-                                        <a href="<?=base_url();?>laporin/view_admin/all" class="btn btn-secondary mb-3 ml-2">Kembali</a>
-                                        <a href="<?=base_url();?>cetak/laporan_kelas/<?php echo explode('/',$_SERVER['REQUEST_URI'])[4]?>" class="btn btn-danger mb-3 ml-2" target="_blank">Cetak Laporan</a>
+                                        <a href="<?=base_url();?>laporin/<?=$jenis?>/<?=$tipe?>" class="btn btn-secondary mb-3 ml-2">Kembali</a>
 
                                     </form>
                                     </div>
@@ -180,21 +183,23 @@ body {
                                     <div class="row overflow-auto">
                                     <div class="col-md-12">                                    
                                     <div class="form-group ">
-                                        <form action="<?=base_url();?>laporin/diskusi_laporin" enctype="multipart/form-data" method="POST">                                            
+                                        <form action="<?=base_url();?>laporin/diskusi_laporin" enctype="multipart/form-data" method="POST">    
+                                        <input type="hidden" name="param" value="<?=explode('/',$_SERVER['REQUEST_URI'])[3]?>"/>
+                                        
                                         <?php foreach ($diskusi as $key => $value) { ?>
                                             <?php if($value['id_user_level'] == "1" || $value['id_user_level'] == "2") {?>
                                                 <div class="container">
                                                 <label>Admin</label>
                                                 <img src="<?=base_url();?>assets/public/assets/img/adminicon.jpg" alt="Avatar" >
                                                 <p><?php echo $value['pesan']; ?></p>
-                                                <span class="time-right"><?php echo $value['time_created']; ?></span>
+                                                <span class="time-right"><?php echo $value['date_created']; ?></span>
                                                 </div>
                                             <?php } if($value['id_user_level'] == "3") {?>
                                                 <div class="container darker">
                                                 <label>User</label>
                                                 <img src="<?=base_url();?>assets/public/assets/img/usericon.jpg" alt="Avatar" class="right">
                                                 <p><?php echo $value['pesan']; ?></p>
-                                                <span class="time-left"><?php echo $value['time_created']; ?></span>
+                                                <span class="time-left"><?php echo $value['date_created']; ?></span>
                                                 </div>
                                             <?php }?>
                                         <?php }?>
@@ -206,7 +211,7 @@ body {
                                         <div class="col-md-6">
                                             <textarea name="pesan" id="pesan" cols="80" rows="4"></textarea>
                                             <input type="hidden" name="id_laporin" value="<?=$laporin[0]['id_laporin']?>"/>
-                                            <input type="hidden" name="id_user" value="<?=$laporin[0]['id_user_detail']?>"/>
+                                            <!-- <input type="hidden" name="id_user" value="<?=$laporin[0]['id_user_detail']?>"/> -->
                                             <br>
                                             <br>
                                             <button type="submit" class="btn btn-primary mb-3 mr-2">

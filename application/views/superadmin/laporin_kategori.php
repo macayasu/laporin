@@ -109,10 +109,10 @@
                                 <!-- /.card-header -->
                                 <div class="card-body">
                                     <div class="row">
-                                        <button type="button" class="btn btn-primary mb-3 mr-2" data-toggle="modal"
+                                        <!-- <button type="button" class="btn btn-primary mb-3 mr-2" data-toggle="modal"
                                             data-target="#tambah_laporin">
                                             Tambah Laporin
-                                        </button>
+                                        </button> -->
                                         <div class="dropdown">
                                             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 Filter Kategori
@@ -125,7 +125,7 @@
                                         </div>
                                       
                                       
-                                        <a href="<?=base_url();?>cetak/laporan_kelas/<?php echo explode('/',$_SERVER['REQUEST_URI'])[4]?>" class="btn btn-danger mb-3 ml-2" target="_blank">Cetak Laporan</a>
+                                        <a href="<?=base_url();?>cetak/laporan_kategori/<?php echo explode('/',$_SERVER['REQUEST_URI'])[4]?>" class="btn btn-danger mb-3 ml-2" target="_blank">Cetak Laporan</a>
                                     </div>
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
@@ -153,8 +153,13 @@
                                             $nama = $i['nama'];
                                             $email = $i['email'];
                                             $alamat = $i['alamat'];
+                                            $kelas = $i['kelas'];
+                                            $nama_ortu = $i['nama_ortu'];
+                                            $telp_ortu = $i['telp_ortu'];
+                                            $alamat_ortu = $i['alamat_ortu'];
                                             $id_jenis_masalah = $i['id_jenis_masalah'];
                                             $nama_jenis_masalah = $i['nama_jenis_masalah'];
+                                            $deskripsi_masalah = $i['deskripsi_masalah'];
                                             $id_status = $i['id_status_laporin'];
                                             $status = $i['nama_status_laporin'];
                                             $tgl_melapor = $i['tgl_melapor'];
@@ -168,21 +173,95 @@
                                                 <td><?=$alamat?></td>
                                                 <td><?=$nama_jenis_masalah?></td>
                                                 <td><?=$tgl_melapor?></td>
-                                                <td>
-                                                    <center> <a
-                                                    href="<?= base_url();?>assets/laporin/<?php echo $foto?>"
-                                                    target="_blank"><img
-                                                    src="<?= base_url();?>assets/laporin/<?php echo $foto?>"
-                                                    style="width: 50%"> </a></center>
-                                                </td>
+                                                <?php if($foto) {?>
+                                                    <td>
+                                                        <center> <a
+                                                        href="<?= base_url();?>assets/laporin/<?php echo $foto?>"
+                                                        target="_blank"><img
+                                                        src="<?= base_url();?>assets/laporin/<?php echo $foto?>"
+                                                        style="width: 50%"> </a></center>
+                                                    </td>
+                                                <?php } else { ?>
+                                                    <td>
+                                                       Tidak ada
+                                                    </td>
+                                                <?php } ?>
                                                 <td><?=$status?></td>
                                                 <td class="text-center" width="30%">
-                                                    <a href="" class="btn btn-warning" data-toggle="modal" data-target="#ubah_status<?=$id_laporin?>"><i class="nav-icon fas fa-check"></i></a>                                                    
+                                                <a href="" class="btn btn-info" data-toggle="modal" data-target="#lihat_detail<?=$id_laporin?>"><i class="nav-icon fas fa-eye"></i></a>                                                    
+                                                <a href="<?=base_url();?>laporin/detail_laporin?id=<?=$id_laporin?>&jenis=<?php echo explode('/',$_SERVER['REQUEST_URI'])[3]?>&tipe=<?php echo explode('/',$_SERVER['REQUEST_URI'])[4]?>" class="btn btn-warning"><i class="nav-icon fas fa-info-circle"></i></a>                                                    
                                                     <a href="" class="btn btn-primary" data-toggle="modal" data-target="#ubah_laporin<?=$id_laporin?>"><i class="nav-icon fas fa-edit"></i></a>
                                                     <a href="" data-toggle="modal" data-target="#delete_laporin<?=$id_laporin?>" class="btn btn-danger"><i class="fas fa-trash"></i></a>
                                                 </td>
                                             </tr>
                                        
+                                                   <!-- Modal Lihat Data -->
+                                                   <div class="modal fade" id="lihat_detail<?=$id_laporin?>" tabindex="-1"
+                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Lihat Data
+                                                                Laporin
+                                                            </h5>
+                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                                <div class="form-group">
+                                                                    <label for="nisn">NISN</label>
+                                                                    <p><?=$nisn?></p>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="nama">Nama Lengkap</label>
+                                                                    <p><?=$nama?></p>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="email">Email</label>
+                                                                    <p><?=$email?></p>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="alamat">Alamat</label>
+                                                                    <p><?=$alamat?></p>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="kelas">Kelas</label>
+                                                                    <p><?=$kelas?></p>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="nama_ortu">Nama Orang Tua/Wali</label>
+                                                                    <p><?=$nama_ortu?></p>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="telp_ortu">No.Telp Orang Tua/Wali</label>
+                                                                    <p><?=$telp_ortu?></p>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="alamat_ortu">Alamat Orang Tua/Wali</label>
+                                                                    <p><?=$alamat_ortu?></p>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="jenis_masalah">Jenis Masalah</label>
+                                                                    <p><?=$nama_jenis_masalah?></p>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="deskripsi_masalah">Deskripsi Masalah</label>
+                                                                    <p><?=$deskripsi_masalah?></p>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="foto">Foto</label>
+                                                                        <p><img src="<?= base_url();?>/assets/laporin/<?php echo $foto?>" style="width: 50%"></p>
+                                                                </div>
+                                                             
+                                                        </div>
+
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        
                                         
                                             <!-- Modal Ubah Data -->
                                             <div class="modal fade" id="ubah_laporin<?=$id_laporin?>" tabindex="-1"
@@ -200,7 +279,7 @@
                                                         </div>
                                                         <div class="modal-body">
 
-                                                            <form action="<?=base_url();?>laporin/update_laporin"
+                                                            <form action="<?=base_url();?>laporin/update_laporin/<?php echo explode('/',$_SERVER['REQUEST_URI'])[4]?>"
                                                                 enctype="multipart/form-data" method="POST">
                                                                 <!-- <input type="text" value="<?=$id_laporin?>" name="id_laporin"
                                                                     hidden> -->
@@ -236,6 +315,36 @@
                                                                         value="<?=$alamat?>" required>
                                                                 </div>
                                                                 <div class="form-group">
+                                                                    <label for="kelas">Kelas</label>
+                                                                    <select name="kelas" class="form-control">
+                                                                        <option value="I" <?= $kelas == "I" ? 'selected' : '' ?>>I</option>
+                                                                        <option value="II" <?= $kelas == "II" ? 'selected' : '' ?>>II</option>
+                                                                        <option value="III" <?= $kelas == "III" ? 'selected' : '' ?>>III</option>
+                                                                        <option value="IV" <?= $kelas == "IV" ? 'selected' : '' ?>>IV</option>
+                                                                        <option value="V" <?= $kelas == "V" ? 'selected' : '' ?>>V</option>
+                                                                        <option value="VI" <?= $kelas == "VI" ? 'selected' : '' ?>>VI</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="nama_ortu">Nama Orang Tua/Wali</label>
+                                                                    <input type="text" class="form-control"
+                                                                        id="nama_ortu" name="nama_ortu"
+                                                                        value="<?=$nama_ortu?>" required>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="telp_ortu">No.Telp Orang Tua/Wali</label>
+                                                                    <input type="text" class="form-control"
+                                                                        id="telp_ortu" name="telp_ortu"
+                                                                        value="<?=$telp_ortu?>" required>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="alamat_ortu">Alamat Orang Tua/Wali</label>
+                                                                    <input type="text" class="form-control"
+                                                                        id="alamat_ortu" name="alamat_ortu"
+                                                                        value="<?=$alamat_ortu?>" required>
+                                                                </div>
+                                                                
+                                                                <div class="form-group">
                                                                     <label for="jenis_masalah">Jenis Masalah</label>
                                                                    <select name="jenis_masalah" id="jenis_masalah" class="form-control">
                                                                    <?php foreach ($jenis_masalah as $key => $jm) { ?>
@@ -243,14 +352,10 @@
                                                                    <?php } ?> 
                                                                     </select>
                                                                 </div>
-                                                                <!-- <div class="form-group">
-                                                                    <label for="status">Status</label>
-                                                                   <select name="status"  id="status" class="form-control">
-                                                                    <?php foreach ($status_laporin as $key => $st) { ?>
-                                                                        <option value="<?=$st['id_status_laporin']?>" <?php echo $status == $st['id_status_laporin'] ? 'selected' : ''?>><?=$st['nama_status_laporin']?></option>
-                                                                    <?php } ?> 
-                                                                </select>
-                                                                </div> -->
+                                                                <div class="form-group">
+                                                                    <label for="deskripsi_masalah">Deskripsi Masalah</label>
+                                                                   <textarea class="form-control" id="deskripsi_masalah" name="deskripsi_masalah"><?=$deskripsi_masalah?></textarea>
+                                                                </div>    
                                                             
                                                                 <div class="form-group">
                                                                     <label for="foto">Foto</label>
@@ -335,7 +440,7 @@
                                                             </button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <form action="<?= base_url();?>laporin/hapus_laporin"
+c                                                            <form action="<?= base_url();?>laporin/hapus_laporin?jenis=<?php echo explode('/',$_SERVER['REQUEST_URI'])[3]?>&tipe=<?php echo explode('/',$_SERVER['REQUEST_URI'])[4]?>"
                                                                 method="post" enctype="multipart/form-data">
                                                                 <div class="row">
                                                                     <div class="col-md-12">
@@ -411,20 +516,47 @@
                                     id="alamat" name="alamat" required>
                             </div>
                             <div class="form-group">
-                                <label for="jenis_masalah">Jenis Masalah</label>
-                                <select name="jenis_masalah" id="jenis_masalah" class="form-control">
-                                    <?php foreach ($jenis_masalah as $key => $jm) { ?>
-                                        <option value="<?=$jm['id_jenis_masalah']?>" <?php echo $jenis_masalah == $jm['nama_jenis_masalah'] ? 'selected' : ''?>><?=$jm['nama_jenis_masalah']?></option>
-                                    <?php } ?> 
+                                <label for="kelas">Kelas</label>
+                                <select name="kelas" class="form-control">
+                                    <option value="I" >I</option>
+                                    <option value="II" >II</option>
+                                    <option value="III" >III</option>
+                                    <option value="IV" >IV</option>
+                                    <option value="V" >V</option>
+                                    <option value="VI" >VI</option>
                                 </select>
                             </div>
-                            <!-- <div class="form-group">
-                                <label for="status">Status</label>
-                                <select name="status" id="status" class="form-control">
-                                <option value="0">Belum di Proses</option>
-                                <option value="1">Selesai</option>
+                            <div class="form-group">
+                                <label for="nama_ortu">Nama Orang Tua/Wali</label>
+                                <input type="text" class="form-control"
+                                    id="nama_ortu" name="nama_ortu"
+                                     required>
+                            </div>
+                            <div class="form-group">
+                                <label for="telp_ortu">No.Telp Orang Tua/Wali</label>
+                                <input type="text" class="form-control"
+                                    id="telp_ortu" name="telp_ortu"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <label for="alamat_ortu">Alamat Orang Tua/Wali</label>
+                                <input type="text" class="form-control"
+                                    id="alamat_ortu" name="alamat_ortu"
+                                    required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="jenis_masalah">Jenis Masalah</label>
+                                <select name="jenis_masalah" id="jenis_masalah" class="form-control">
+                                <?php foreach ($jenis_masalah as $key => $jm) { ?>
+                                    <option value="<?=$jm['id_jenis_masalah']?>" <?php echo $jenis_masalah == $jm['nama_jenis_masalah'] ? 'selected' : ''?>><?=$jm['nama_jenis_masalah']?></option>
+                                <?php } ?> 
                                 </select>
-                            </div> -->
+                            </div>
+                            <div class="form-group">
+                                <label for="deskripsi_masalah">Deskripsi Masalah</label>
+                                <textarea class="form-control" id="deskripsi_masalah" name="deskripsi_masalah"></textarea>
+                            </div>
                             <div class="form-group">
                                 <label for="foto">Foto</label>
                                 <input type="file" class="form-control" id="foto" name="foto" required>

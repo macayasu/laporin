@@ -11,49 +11,68 @@ class Cetak extends CI_Controller {
 		$this->load->model('m_laporin');  
     }
 
-    public function kartu_kuning($id_user){
-
-        $data['pegawai'] = $this->m_user->get_user_detail_by_id($id_user)->result_array();
-        // echo var_dump($data);
-        // die();
-    
-        $this->load->library('pdf');
-    
-        $this->pdf->setPaper('A4', 'potrait');
-        $this->pdf->set_option('isRemoteEnabled', true);
-        $this->pdf->filename = "kartu_kuning.pdf";
-        $this->pdf->load_view('kartu_kuning_pdf', $data);
-    
-    
-    }
 
     public function laporan_laporin($jenis){
        
-        if($jenis == 'terbaru') {
-            $data['laporin'] = $this->m_laporin->get_all_laporin_terbaru()->result_array();
-            $data['jenis_laporan'] = "Terbaru";
-        }
-        else if($jenis == 'proses') {
-            $data['laporin'] = $this->m_laporin->get_all_laporin_proses()->result_array();
-            $data['jenis_laporan'] = "Diproses";
-        }
-        else if($jenis == 'tolak') {
-            $data['laporin'] = $this->m_laporin->get_all_laporin_tolak()->result_array();
-            $data['jenis_laporan'] = "Ditolak";
-        }
-        else if($jenis == 'selesai') {
-            $data['laporin'] = $this->m_laporin->get_all_laporin_selesai()->result_array();
-            $data['jenis_laporan'] = "Selesai";
-        }
-        else if($jenis == 'disposisi') {
-            $data['laporin'] = $this->m_laporin->get_all_laporin_disposisi()->result_array();
-            $data['jenis_laporan'] = "Didisposisi";
-        }
-        else {
-            $data['laporin'] = $this->m_laporin->get_all_laporin()->result_array();
-            $data['jenis_laporan'] = "Semua";
-        }
-       
+        if($this->session->userdata('id_user_level') == 1) {
+            if($jenis == 'terbaru') {
+                 $data['laporin'] = $this->m_laporin->get_all_laporin_terbaru(null,null)->result_array();
+                 $data['jenis_laporan'] = "Terbaru";
+             }
+             else if($jenis == 'proses') {
+                 $data['laporin'] = $this->m_laporin->get_all_laporin_proses(null,null)->result_array();
+                 $data['jenis_laporan'] = "Diproses";
+             }
+             else if($jenis == 'tolak') {
+                 $data['laporin'] = $this->m_laporin->get_all_laporin_tolak(null,null)->result_array();
+                 $data['jenis_laporan'] = "Ditolak";
+             }
+             else if($jenis == 'selesai') {
+                 $data['laporin'] = $this->m_laporin->get_all_laporin_selesai(null,null)->result_array();
+                 $data['jenis_laporan'] = "Selesai";
+             }
+             else if($jenis == 'disposisi') {
+                 $data['laporin'] = $this->m_laporin->get_all_laporin_disposisi(null,null)->result_array();
+                 $data['jenis_laporan'] = "Didisposisi";
+             }
+             else {
+                 $data['laporin'] = $this->m_laporin->get_all_laporin(null,null)->result_array();
+                 $data['jenis_laporan'] = "Semua";
+             }
+         }
+         else {
+             
+             $kelas = $this->m_user->get_admin_detail_by_id($this->session->userdata('id_user'))->result_array();
+ 
+             if($jenis == 'terbaru') {
+                 $data['laporin'] = $this->m_laporin->get_all_laporin_terbaru($kelas[0]['kelas'],null)->result_array();
+                 
+                 $data['jenis_laporan'] = "Terbaru";
+             }
+             else if($jenis == 'proses') {
+                 $data['laporin'] = $this->m_laporin->get_all_laporin_proses($kelas[0]['kelas'],null)->result_array();
+                 
+                 $data['jenis_laporan'] = "Diproses";
+             }
+             else if($jenis == 'tolak') {
+                 $data['laporin'] = $this->m_laporin->get_all_laporin_tolak($kelas[0]['kelas'],null)->result_array();
+                 $data['jenis_laporan'] = "Ditolak";
+             }
+             else if($jenis == 'selesai') {
+                 $data['laporin'] = $this->m_laporin->get_all_laporin_selesai($kelas[0]['kelas'],null)->result_array();
+                 $data['jenis_laporan'] = "Selesai";
+             }
+             else if($jenis == 'disposisi') {
+                 $data['laporin'] = $this->m_laporin->get_all_laporin_disposisi($kelas[0]['kelas'],null)->result_array();
+      
+                 $data['jenis_laporan'] = "Didisposisi";
+             }
+             else {
+                 $data['laporin'] = $this->m_laporin->get_all_laporin($kelas[0]['kelas'],null)->result_array();
+                 $data['jenis_laporan'] = "Semua";
+             }
+         }
+ 
     
         $this->load->library('pdf');
     
@@ -78,139 +97,27 @@ class Cetak extends CI_Controller {
         $this->pdf->filename = "laporan.pdf";
         $this->pdf->load_view('laporan_laporin', $data);
     
-    
     }
 
-    public function laporan_laporin_perbulan(){
-        $bulan = $this->input->post('bulan');
-        if($bulan == 1){
-            $start = '2022-01-01';
-            $end = '2022-01-31';
-            $data['bulan'] = "Januari";
-        }else if($bulan == 2){
-            $start = '2022-02-01';
-            $end = '2022-02-28';
-            $data['bulan'] = "Februari";
-        }else if($bulan == 3){
-            $start = '2022-03-01';
-            $end = '2022-03-31';
-            $data['bulan'] = "Maret";
-        }else if($bulan == 4){
-            $start = '2022-04-01';
-            $end = '2022-04-30';
-            $data['bulan'] = "April";
-        }else if($bulan == 5){
-            $start = '2022-05-01';
-            $end = '2022-05-31';
-            $data['bulan'] = "Mei";
-        }else if($bulan == 6){
-            $start = '2022-06-01';
-            $end = '2022-06-30';
-            $data['bulan'] = "Juni";
-        }else if($bulan == 7){
-            $start = '2022-07-01';
-            $end = '2022-07-31';
-            $data['bulan'] = "Juli";
-        }else if($bulan == 8){
-            $start = '2022-08-01';
-            $end = '2022-08-31';
-            $data['bulan'] = "Agustus";
-        }else if($bulan == 9){
-            $start = '2022-09-01';
-            $end = '2022-09-30';
-            $data['bulan'] = "September";
-        }else if($bulan == 10){
-            $start = '2022-10-01';
-            $end = '2022-10-31';
-            $data['bulan'] = "Oktober";
-        }else if($bulan == 11){
-            $start = '2022-11-01';
-            $end = '2022-11-30';
-            $data['bulan'] = "November";
-        }else if($bulan == 12){
-            $start = '2022-12-01';
-            $end = '2022-12-31';
-            $data['bulan'] = "Desember";
-            
-        }
-       
+    public function laporan_kategori($kategori){
 
-        $data['laporin'] = $this->m_laporin->get_all_laporin_by_date_month($start, $end)->result_array();
+        if($this->session->userdata('id_user_level') == 1) {
+            $data['laporin'] = $this->m_laporin->get_kategori_laporin($kategori,null)->result_array();
+        }
+        else {
+            $kelas = $this->m_user->get_admin_detail_by_id($this->session->userdata('id_user'))->result_array();
+            $data['laporin'] = $this->m_laporin->get_kategori_laporin($kategori,$kelas[0]['kelas'])->result_array();
+        }
+
+        $kategori = $this->m_laporin->get_jenis_masalah_byid($kategori)->result();
+        $data['jenis_laporan'] = $kategori[0]->nama_jenis_masalah;
        
-    
         $this->load->library('pdf');
     
         $this->pdf->setPaper('A4', 'landscape');
         $this->pdf->set_option('isRemoteEnabled', true);
         $this->pdf->filename = "laporan.pdf";
-        $this->pdf->load_view('laporan_laporin_perbulan', $data);
-    
-    
-    }
-    
-    public function laporan_perbulan(){
-        $bulan = $this->input->post('bulan');
-        if($bulan == 1){
-            $start = '2022-01-01';
-            $end = '2022-01-31';
-            $data['bulan'] = "Januari";
-        }else if($bulan == 2){
-            $start = '2022-02-01';
-            $end = '2022-02-28';
-            $data['bulan'] = "Februari";
-        }else if($bulan == 3){
-            $start = '2022-03-01';
-            $end = '2022-03-31';
-            $data['bulan'] = "Maret";
-        }else if($bulan == 4){
-            $start = '2022-04-01';
-            $end = '2022-04-30';
-            $data['bulan'] = "April";
-        }else if($bulan == 5){
-            $start = '2022-05-01';
-            $end = '2022-05-31';
-            $data['bulan'] = "Mei";
-        }else if($bulan == 6){
-            $start = '2022-06-01';
-            $end = '2022-06-30';
-            $data['bulan'] = "Juni";
-        }else if($bulan == 7){
-            $start = '2022-07-01';
-            $end = '2022-07-31';
-            $data['bulan'] = "Juli";
-        }else if($bulan == 8){
-            $start = '2022-08-01';
-            $end = '2022-08-31';
-            $data['bulan'] = "Agustus";
-        }else if($bulan == 9){
-            $start = '2022-09-01';
-            $end = '2022-09-30';
-            $data['bulan'] = "September";
-        }else if($bulan == 10){
-            $start = '2022-10-01';
-            $end = '2022-10-31';
-            $data['bulan'] = "Oktober";
-        }else if($bulan == 11){
-            $start = '2022-11-01';
-            $end = '2022-11-30';
-            $data['bulan'] = "November";
-        }else if($bulan == 12){
-            $start = '2022-12-01';
-            $end = '2022-12-31';
-            $data['bulan'] = "Desember";
-            
-        }
-       
-
-        $data['pegawai'] = $this->m_user->get_all_user_by_date_month($start, $end)->result_array();
-       
-    
-        $this->load->library('pdf');
-    
-        $this->pdf->setPaper('A4', 'landscape');
-        $this->pdf->set_option('isRemoteEnabled', true);
-        $this->pdf->filename = "kartu_kuning.pdf";
-        $this->pdf->load_view('laporan_pencaker_perbulan', $data);
+        $this->pdf->load_view('laporan_laporin', $data);
     
     
     }

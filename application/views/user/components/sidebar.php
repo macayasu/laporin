@@ -41,71 +41,54 @@
                         <p class="text">Dashboard</p>
                     </a>
                 </li>
+
                 <li class="nav-item">
-                    <a href="<?=base_url();?>Alur_Pendaftaran/view_user_pendaftaran" class="nav-link">
-                        <i class="nav-icon fas fa-edit"></i>
-                        <p class="text">Alur Pendaftaran</p>
+                    <a href="<?=base_url();?>laporin/view_user/all" class="nav-link">
+
+                        <i class="nav-icon fas fa-users text-white"></i>
+                        <p class="text">Laporin</p>
                     </a>
                 </li>
-              
+
                 <li class="nav-item">
-                    <a href="<?=base_url();?>Daftar/view_user/<?=$this->session->userdata('id_user');?>"
-                        class="nav-link">
-                        <i class="nav-icon fas fa-edit"></i>
-                        <p class="text">Daftar AK1</p>
+                    <a href="<?=base_url();?>master/data_profil_user" class="nav-link">
+                        <i class="nav-icon fas fa-user"></i>
+                        <p>Data Profil</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?=base_url();?>Alur_Pendaftaran/view_user_perpanjangan" class="nav-link">
-                        <i class="nav-icon fas fa-edit"></i>
-                        <p class="text">Alur Perpanjangan</p>
+                    <a href="http://wa.me/628999673455?text=Halo%20Saya%20Butuh%20Bantuan" target="_blank" class="nav-link">
+                        <i class="nav-icon fas fa-question"></i>
+                        <p>Bantuan</p>
                     </a>
                 </li>
-               
-
-                <li class="nav-item" style="<?php 
-                         
-                        //  $now = time(); // or your date as well
-                        //  $your_date = strtotime($user_data['akhir_berlaku']);
-                        //  $datediff = $your_date - $now;
-                         
-                        //  echo round($datediff / (60 * 60 * 24));
-                        //  echo " ";
-
-                        if($user_data['akhir_berlaku'] < date("Y-m-d") ){
-                            echo '';
-                        }else{
-                            echo 'display:none;';
-                        }
-
-                        if($user_data['akhir_berlaku'] == NULL){
-                            echo 'display:none;';
-                        }
-                        
-                        ?>">
-                    <a href="<?=base_url();?>Perpanjang/view_user/<?=$this->session->userdata('id_user');?>"
-                        class="nav-link">
-                        <i class="nav-icon fas fa-book"></i>
-
-                        <p>Perpanjang</p>
+                <li class="nav-item">
+                    <a href="<?=base_url();?>login/log_out_user" class="nav-link">
+                        <i class="nav-icon fa fa-arrow-right"></i>
+                        <p>Logout</p>
                     </a>
                 </li>
-                <li class="nav-item" style="<?php 
-                        //  echo var_dump($user['akhir_berlaku'] < date("Y-m-d"));
-                        if($user_data['akhir_berlaku'] > date("Y-m-d") AND $user_data['id_status_verifikasi'] == 2  AND $user_data['id_status_perpanjangan'] == 1 AND $user_data['id_status_aktif'] == 2){
-                            echo '';
-                        }else{
-                            echo 'display:none;';
-                        }
-                        
-                        ?>">
-                    <a href="<?=base_url();?>Cetak/kartu_kuning/<?=$this->session->userdata('id_user');?>"
-                        class="nav-link" target="_blank">
-                        <i class="nav-icon fas fa-book"></i>
 
-                        <p>Cetak Kartu AK1</p>
+                <!-- 
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon  fas fa-users"></i>
+                        <p>
+                            Data Laporin
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
                     </a>
-                </li>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="<?=base_url();?>laporin/view_admin/all" class="nav-link">
+                                <i class="nav-icon fas fa-book"></i>
+                                <p>Pelaporan</p>
+                            </a>
+                        </li>
+                       
+                    </ul>
+                </li> -->
+            
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
